@@ -7,7 +7,7 @@
     "lrnsys-behaviors": "LRNWebComponents/lrnsys-behaviors#^1.0.0",
     "materializecss-styles": "LRNWebComponents/materializecss-styles#^0.0.5",
     "lrndesign-avatar": "LRNWebComponents/lrndesign-avatar#^0.0.3",
-    "paper-input": "PolymerElements/paper-input#^2.0.1",
+    "paper-input": "LRNWebComponents/paper-input#feature/selection",
     "mtz-marked-editor": "MaritzSTL/mtz-marked-editor#^0.2.2",
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",
     "iron-ajax": "PolymerElements/iron-ajax#^2.0.2",
