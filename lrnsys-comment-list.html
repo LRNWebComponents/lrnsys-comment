@@ -23,7 +23,7 @@ A listing and event handling for comments.
       </template>
     </iron-list>
     <paper-toast text="Updated" id="toast"></paper-toast>
-    <paper-dialog id="actions">
+    <paper-dialog id="actions" modal>
       <h2>Delete Comment</h2>
       <p>Are you sure you want to delete your comment?</p>
       <div class="buttons">
@@ -69,8 +69,8 @@ A listing and event handling for comments.
       },
       handleEditing: function (e) {
         let root = this;
-        root.$$('#toast').text = 'Be awesome to each other';
-        root.$$('#toast').toggle();
+        root.$.toast.text = 'Be awesome to each other';
+        root.$.toast.toggle();
       },
       /**
        * Handle a reply event bubbling up from a comment we've printed
@@ -124,8 +124,6 @@ A listing and event handling for comments.
       handleLike: function (e) {
         let root = this;
         root.activeComment = e.detail.comment;
-        root.$$('#toast').text = 'Updated';
-        root.$$('#toast').toggle();
       },
       /**
        * Handle a delete dialog to confirm.
@@ -133,7 +131,7 @@ A listing and event handling for comments.
       handleDeleteDialog: function (e) {
         let root = this;
         root.activeComment = e.detail.comment;
-            root.$$('#actions').open();
+        root.$.actions.open();
       },
       /**
        * Handle a delete event bubbling up from a comment we've printed.
@@ -149,8 +147,8 @@ A listing and event handling for comments.
             root.set('comments.data', []);
             root.set('comments.data', comments);
             // force tree to notice element updated
-            root.$$('#toast').text = 'Comment deleted';
-            root.$$('#toast').toggle();
+            root.$.toast.text = 'Comment deleted';
+            root.$.toast.toggle();
             // bail early
             return true;
           }
@@ -163,8 +161,8 @@ A listing and event handling for comments.
         let root = this;
         // @todo something with the actual saved comment
         var comment = e.detail.comment;
-        root.$$('#toast').text = 'Comment saved!';
-        root.$$('#toast').toggle();
+        root.$.toast.text = 'Comment saved!';
+        root.$.toast.toggle();
       },
       /**
        * Simple way to convert from object to array.

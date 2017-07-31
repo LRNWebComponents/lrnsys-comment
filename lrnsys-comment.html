@@ -121,13 +121,8 @@ A well styled comment for a user with markdown support.
     <paper-card class$="paper-card-length-[[comment.attributes.threadDepth]]">
       <div class="comment-body">
         <div id="bodyarea" class="nowrap">
-<<<<<<< HEAD
-          <h4>{{comment.relationships.author.data.name}} <span class="grey-said"> said:</span></h4>
+          <h4>[[comment.relationships.author.data.name]] said:</h4>
           <marked-element smartypants id="rendered-comment" markdown="[[comment.attributes.body]]">
-=======
-          <h4>{{comment.relationships.author.data.name}} said:</h4>
-          <marked-element id="rendered-comment" markdown="[[comment.attributes.body]]">
->>>>>>> e07b83baab38b191c474f4934c4d4a385750c631
             <div slot="markdown-html"></div>
           </marked-element>
         </div>
