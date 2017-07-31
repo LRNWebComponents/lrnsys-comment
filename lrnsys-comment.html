@@ -119,7 +119,7 @@ A well styled comment for a user with markdown support.
       <div class="comment-body">
         <div id="bodyarea" class="nowrap">
           <h4>{{comment.relationships.author.data.name}} <span class="grey-said"> said:</span></h4>
-          <marked-element id="rendered-comment" markdown="[[comment.attributes.body]]">
+          <marked-element smartypants id="rendered-comment" markdown="[[comment.attributes.body]]">
             <div slot="markdown-html"></div>
           </marked-element>
         </div>
