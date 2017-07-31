@@ -9,6 +9,7 @@
       "actions": {
         "edit": true,
         "reply": true,
+        "like": false,
         "delete": true
       },
       "attributes": {
@@ -36,6 +37,7 @@
       "actions": {
         "edit": false,
         "reply": true,
+        "like": true,
         "delete": false
       },
       "attributes": {
@@ -63,6 +65,7 @@
       "actions": {
         "edit": false,
         "reply": true,
+        "like": true,
         "delete": false
       },
       "attributes": {
