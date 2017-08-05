@@ -10,7 +10,7 @@
     "paper-input": "LRNWebComponents/paper-input#feature/selection",
     "mtz-marked-editor": "MaritzSTL/mtz-marked-editor#^0.2.2",
     "paper-toast": "PolymerElements/paper-toast#^2.0.0",
-    "iron-ajax": "PolymerElements/iron-ajax#^2.0.2",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.4.4",
     "moment-element": "abdonrd/moment-element#^2.0.0",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#^2.0.0",
