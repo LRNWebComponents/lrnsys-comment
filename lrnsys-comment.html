@@ -1,9 +1,9 @@
-<link rel="import" href="../moment-element/moment-element.html">
-<link rel="import" href="../lrndesign-avatar/lrndesign-avatar.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
-<link rel="import" href="../paper-card/paper-card.html">
-<link rel="import" href="../paper-input/paper-textarea.html">
-<link rel="import" href="../lrnsys-button/lrnsys-button.html">
+<link rel="import" href="../../../elements/moment-element/moment-element.html">
+ 
+ 
+ 
+ 
+ 
 <link rel="import" href="../materializecss-styles/colors.html">
 <link rel="import" href="../iron-icons/editor-icons.html">
 <link rel="import" href="../marked-element/marked-element.html">
@@ -35,8 +35,9 @@ A well styled comment for a user with markdown support.
         margin-bottom: -2px;
       }
       paper-card {
-        margin: 1.25em;
+        margin: .5em 1em .5em .5em;
         padding: 1em;
+        max-width: 70%;
       }
       h1,
       h2,
@@ -49,39 +50,48 @@ A well styled comment for a user with markdown support.
         line-height: 18px;
         text-align: left;
       }
-      .nowrap marked-element {
+      #edit-comment {
+        background-color: white;
+        padding: .25em;
+      }
+      .nowrap marked-element:hover {
+        box-shadow: -1px 0 0 0 black inset;
+        cursor: pointer;
+      }
+      .nowrap marked-element ::slotted(#content p.marked-element) {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .paper-card-length-1 {
-        width: 85%;
-        margin-bottom: .5em;
-      }
-      .paper-card-length-2 {
-        width: 81%;
-        margin-top: 0;
-        margin-bottom: .5em;
-      }
-      .paper-card-length-3 {
-        width: 77%;
-        margin-top: 0;
-        margin-bottom: .5em;
+      .comment-depth-1 {
+        margin: 0em;
       }
       .comment-depth-2 {
         margin: .5em;
       }
-      .comment-depth-3 {
+      .comment-depth-3,
+      .comment-depth-4,
+      .comment-depth-5,
+      .comment-depth-6,
+      .comment-depth-7,
+      .comment-depth-8,
+      .comment-depth-9 {
         margin: 1em;
       }
-      .comment-depth-4 {
-        margin: 1em;
+      .paper-card-length-1 {
+        width: 85%;
       }
-      .comment-depth-5 {
-        margin: 1em;
+      .paper-card-length-2 {
+        width: 81%;
       }
-      .comment-depth-6 {
-        margin: 1em;
+      .paper-card-length-3,
+      .paper-card-length-4,
+      .paper-card-length-5,
+      .paper-card-length-6,
+      .paper-card-length-7,
+      .paper-card-length-8,
+      .paper-card-length-9 {
+        width: 77%;
       }
       .center {
         padding: 0;
@@ -90,19 +100,18 @@ A well styled comment for a user with markdown support.
         border-radius: 50% !important;
       }
       .card-actions {
-        margin-top: .5em;
+        margin: 0;
+        padding: 0;
+        display: flex;
       }
       .card-actions lrnsys-button {
         display: inline-flex;
-        width: 3em;
-        height: 3em;
-        margin: 0;
-        padding: 0;
       }
       .card-actions .card-actions-group {
         margin: 0;
         padding: 0;
         display: inline-flex;
+        width: 35%;
       }
       .card-actions .card-actions-group.left-actions {
         float: left;
@@ -110,27 +119,24 @@ A well styled comment for a user with markdown support.
       .card-actions .card-actions-group.right-actions {
         float: right;
       }
-      .hide-element {
-        display: none;
-      }
       .like-icon-color {
         color: #2196F3;
       }
     </style>
     <div class$="center comment-depth-[[comment.attributes.threadDepth]]">
-      <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left"></lrndesign-avatar>
+      <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left ferpa-protect"></lrndesign-avatar>
       <moment-element datetime$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
     </div>
-    <paper-tooltip for="avatar" animation-delay="0">[[comment.relationships.author.data.username]]</paper-tooltip>
-    <paper-card class$="paper-card-length-[[comment.attributes.threadDepth]]">
+    <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect">[[displayName]]</paper-tooltip>
+    <paper-card id="papercard" class$="paper-card-length-[[comment.attributes.threadDepth]] [[cardColor]]">
       <div class="comment-body">
         <div id="bodyarea" class="nowrap">
-          <h4>[[comment.relationships.author.data.name]] said:</h4>
+          <h4 class="ferpa-protect">[[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:</h4>
           <marked-element smartypants id="rendered-comment" markdown="[[comment.attributes.body]]">
-            <div slot="markdown-html"></div>
+            <div class="markdown-html-slot" slot="markdown-html"></div>
           </marked-element>
         </div>
-        <mtz-marked-editor id="comment-editor" class="hide-element">
+        <mtz-marked-editor id="comment-editor" hidden>
           <div slot="controls">
             <mtz-marked-control-generic-wrap
               icon="editor:format-bold"
@@ -171,35 +177,42 @@ A well styled comment for a user with markdown support.
       </div>
       <div class="card-actions">
         <div class="card-actions-group left-actions">
-          <template is="dom-if" if="[[comment.actions.reply]]">
-            <lrnsys-button on-click="actionHandler" id="reply" data-commentid="[[comment.metadata.id]]" alt="Reply" icon="reply" class="circle" hover-class="[[hoverClass]]"></lrnsys-button>
-          </template>
-          <template is="dom-if" if="[[comment.actions.like]]">
-            <lrnsys-button on-click="actionHandler" id="like" data-commentid="[[comment.metadata.id]]" alt="Like" icon="thumb-up" class="circle" hover-class="[[hoverClass]]"></lrnsys-button>
-          </template>
+          <lrnsys-button on-click="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" class="circle" hover-class="[[hoverClass]]" icon-class="blue-text no-margin" hidden$="[[!comment.actions.reply]]"></lrnsys-button>
+          <lrnsys-button on-click="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" class="circle" hover-class="[[hoverClass]]" icon-class="blue-text no-margin" hidden$="[[!comment.actions.like]]"></lrnsys-button>
         </div>
         <div class="card-actions-group right-actions">
-          <template is="dom-if" if="[[comment.actions.edit]]">
-            <lrnsys-button on-click="actionHandler" id="edit" data-commentid="[[comment.metadata.id]]" icon="create" class="circle" alt="Edit" hover-class="[[hoverClass]]"></lrnsys-button>
-          </template>
-          <template is="dom-if" if="[[comment.actions.delete]]">
-            <lrnsys-button on-click="actionHandler" id="delete" data-commentid="[[comment.metadata.id]]" icon="delete-forever" class="circle" alt="Delete" hover-class="[[hoverClass]]"></lrnsys-button>
-          </template>
+          <lrnsys-button on-click="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" class="circle" alt="Edit" hover-class="[[hoverClass]]" icon-class="blue-text no-margin" hidden$="[[!comment.actions.edit]]"></lrnsys-button>
+          <lrnsys-button on-click="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" class="circle" alt="Delete" hover-class="[[hoverClass]]" icon-class="blue-text no-margin" hidden$="[[!comment.actions.delete]]"></lrnsys-button>
         </div>
       </div>
     </paper-card>
+    <template is="dom-if" if="[[comment.relationships.author.data.visual.icon]]">
+      <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
+      </paper-badge>
+    </template>
   </template>
   <script>
     Polymer({
       is: 'lrnsys-comment',
       listeners: {
         'bodyarea.tap': 'bodyToggle',
+        'bodyarea.dblclick': 'bodyToggleOn',
       },
       properties: {
         comment: {
           type: Object,
           notify: true,
           observer: '_commentLoaded',
+        },
+        displayName: {
+          type: String,
+          notify: true,
+          computed: '_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)',
+        },
+        cardColor: {
+          type: String,
+          notify: true,
+          computed: '_generateCardColor(comment.relationships.author.data.visual)',
         },
         hoverClass: {
           type: String,
@@ -217,10 +230,23 @@ A well styled comment for a user with markdown support.
           reflectToAttribute: true,
         }
       },
+      _generateName: function(name, visual) {
+        if (typeof visual !== typeof undefined && visual.label !== false) {
+          return name + " (" + visual.label + ")";
+        }
+        return name;
+      },
+      _generateCardColor: function(visual) {
+        if (typeof visual !== typeof undefined && visual.label !== false) {
+          return 'amber lighten-5';
+        }
+        return '';
+      },
       _commentLoaded: function(e) {
         let root = this;
-        root.editform = root.comment.metadata.editable;
+        root.editform = root.comment.metadata.editing;
         root.disabled = root.comment.metadata.disabled;
+        root.blockFirstState = true;
       },
       /**
        * Handle all actions from the button bar.
@@ -251,24 +277,35 @@ A well styled comment for a user with markdown support.
           }
         }
       },
+      /**
+       * Trigger the edit form.
+       */
       _editTrigger: function(e) {
         let root = this;
         // bother checking if they can edit or not first
         if (typeof root.comment !== typeof undefined && root.comment.actions.edit) {
           root.async(function() {
             // show / hide the edit vs display area
-            root.$$('#rendered-comment').classList.toggle('hide-element');
-            root.$$('#comment-editor').classList.toggle('hide-element');
+            root.$$('#rendered-comment').hidden = root.editform;
+            root.$$('#comment-editor').hidden = !root.editform;
             // simple icon toggle
             if (root.editform) {
               root.$$('#edit').icon = 'save';
+              root.$$('#edit').alt = 'Save';
               root.$$('#reply').disabled = true;
               root.$$('#edit-comment').focus();
               root.fire('comment-editing', {comment: root.comment});
+              root.blockFirstState = false;
             }
             else {
-              root.fire('comment-save', {comment: root.comment});
+              if (!root.blockFirstState) {
+                root.fire('comment-save', {comment: root.comment});
+              }
+              else {
+                root.blockFirstState = false;
+              }
               root.$$('#edit').icon = 'create';
+              root.$$('#edit').alt = 'Edit';
               root.$$('#reply').disabled = false;
             }
             document.querySelector('iron-list').fire('iron-resize');
@@ -281,7 +318,15 @@ A well styled comment for a user with markdown support.
        */
       bodyToggle: function (e) {
         let root = this;
-        root.$$('#bodyarea').classList.toggle('nowrap');
+        root.$.bodyarea.classList.remove('nowrap');
+        document.querySelector('iron-list').fire('iron-resize');
+      },
+      /**
+       * Toggle the body field expanding to show the whole comment
+       */
+      bodyToggleOn: function (e) {
+        let root = this;
+        root.$.bodyarea.classList.toggle('nowrap');
         document.querySelector('iron-list').fire('iron-resize');
       },
     });
