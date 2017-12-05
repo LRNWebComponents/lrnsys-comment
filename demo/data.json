@@ -1,88 +1,226 @@
 {
-  "data": [
-    {
-      "metadata": {
-        "id": 100,
-        "editform": false,
-        "disabled": false
-      },
-      "actions": {
-        "edit": true,
-        "reply": true,
-        "like": false,
-        "delete": true
-      },
+  "status": 200,
+  "data": [{
+      "type": "comment",
+      "id": "6",
       "attributes": {
-        "body": "This a **whole** bunch of my content that you now see!",
-        "threadDepth": 1,
-        "created": "1991-12-31"
+          "subject": "Feedback from lastcoolkid",
+          "body": "This is a comment.",
+          "thread": "01\/",
+          "threadDepth": 1,
+          "parentComment": "0",
+          "created": "2017-09-20T03:15:58-04:00",
+          "changed": "2017-09-20T03:15:58-04:00"
+      },
+      "metadata": {
+          "editing": false,
+          "disabled": false
       },
       "relationships": {
-        "author": {
-          "data": {
-            "name": "Bryan",
-            "avatar": "http://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg?itok=_1HEhahr",
-            "username": "btopro",
-            "userid": 1
+          "author": {
+              "data": {
+                  "type": "user",
+                  "id": "10458",
+                  "name": "lastcoolkid",
+                  "display_name": "lastcoolkid",
+                  "avatar": false,
+                  "visual": {
+                      "icon": false,
+                      "label": false
+                  },
+                  "sis": null
+              }
+          },
+          "node": {
+              "data": {
+                  "type": "node",
+                  "id": "27"
+              }
           }
-        }
-      }
-    },
-    {
-      "metadata": {
-        "id": 200,
-        "editform": false,
-        "disabled": false
       },
       "actions": {
-        "edit": false,
-        "reply": true,
-        "like": true,
-        "delete": false
-      },
+          "reply": true,
+          "like": false,
+          "edit": true,
+          "delete": true
+      }
+  }, {
+      "type": "comment",
+      "id": "13",
       "attributes": {
-        "body": "This a **whole** bunch of my content that you now see!",
-        "threadDepth": 2,
-        "created": "2000-12-31"
+          "subject": "Feedback from admin",
+          "body": "dfsfsfsfs",
+          "thread": "02\/",
+          "threadDepth": 1,
+          "parentComment": "0",
+          "created": "2017-09-20T19:22:32-04:00",
+          "changed": "2017-09-20T19:22:32-04:00"
+      },
+      "metadata": {
+          "editing": false,
+          "disabled": false
       },
       "relationships": {
-        "author": {
-          "data": {
-            "name": "Michael Potter",
-            "avatar": "http://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/img_1773-1-sq_720_1.jpg?itok=KR9AsnhA",
-            "username": "heymp",
-            "userid": 2
+          "author": {
+              "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                      "icon": "stars",
+                      "label": "Staff"
+                  },
+                  "sis": null
+              }
+          },
+          "node": {
+              "data": {
+                  "type": "node",
+                  "id": "27"
+              }
           }
-        }
-      }
-    },
-    {
-      "metadata": {
-        "id": 300,
-        "editform": false,
-        "disabled": false
       },
       "actions": {
-        "edit": false,
-        "reply": true,
-        "like": true,
-        "delete": false
-      },
+          "reply": true,
+          "like": false,
+          "edit": true,
+          "delete": true
+      }
+  }, {
+      "type": "comment",
+      "id": "14",
       "attributes": {
-        "body": "This a **whole** bunch of my content that you now see!",
-        "threadDepth": 3,
-        "created": "2017-12-31"
+          "subject": "Feedback from admin",
+          "body": "sfsfsfsfsfdff sdfs\n\nfds\ndsf\n\ndsf\nsdf\nsdf",
+          "thread": "02.00\/",
+          "threadDepth": 2,
+          "parentComment": "13",
+          "created": "2017-09-20T19:22:35-04:00",
+          "changed": "2017-09-20T19:22:35-04:00"
+      },
+      "metadata": {
+          "editing": false,
+          "disabled": false
       },
       "relationships": {
-        "author": {
-          "data": {
-            "name": "Brittany Terpstra",
-            "avatar": "http://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/brt.png?itok=WdC_WcB4",
-            "username": "bterp",
-            "userid": 41
+          "author": {
+              "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                      "icon": "stars",
+                      "label": "Staff"
+                  },
+                  "sis": null
+              }
+          },
+          "node": {
+              "data": {
+                  "type": "node",
+                  "id": "27"
+              }
           }
-        }
+      },
+      "actions": {
+          "reply": true,
+          "like": false,
+          "edit": true,
+          "delete": true
       }
-    }
-  ]
+  }, {
+      "type": "comment",
+      "id": "15",
+      "attributes": {
+          "subject": "Feedback from admin",
+          "body": "fdsfsdfs",
+          "thread": "03\/",
+          "threadDepth": 3,
+          "parentComment": "0",
+          "created": "2017-09-20T19:31:19-04:00",
+          "changed": "2017-09-20T19:31:19-04:00"
+      },
+      "metadata": {
+          "editing": false,
+          "disabled": false
+      },
+      "relationships": {
+          "author": {
+              "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                      "icon": "stars",
+                      "label": "Staff"
+                  },
+                  "sis": null
+              }
+          },
+          "node": {
+              "data": {
+                  "type": "node",
+                  "id": "27"
+              }
+          }
+      },
+      "actions": {
+          "reply": true,
+          "like": false,
+          "edit": true,
+          "delete": true
+      }
+  }, {
+      "type": "comment",
+      "id": "29",
+      "attributes": {
+          "subject": "Feedback from admin",
+          "body": "dfdsfsfsfs",
+          "thread": "04\/",
+          "threadDepth": 1,
+          "parentComment": "0",
+          "created": "2017-11-30T16:52:15-05:00",
+          "changed": "2017-11-30T16:52:15-05:00"
+      },
+      "metadata": {
+          "editing": false,
+          "disabled": false
+      },
+      "relationships": {
+          "author": {
+              "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                      "icon": "stars",
+                      "label": "Staff"
+                  },
+                  "sis": null
+              }
+          },
+          "node": {
+              "data": {
+                  "type": "node",
+                  "id": "27"
+              }
+          }
+      },
+      "actions": {
+          "reply": true,
+          "like": false,
+          "edit": true,
+          "delete": true
+      }
+  }],
+  "detail": "",
+  "environment": []
 }

@@ -1,4 +1,11 @@
 <link rel="import" href="lrnsys-comment.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../iron-list/iron-list.html">
+<link rel="import" href="../app-layout/app-layout.html">
+<link rel="import" href="../lrnsys-button/lrnsys-button.html">
+<link rel="import" href="../paper-toast/paper-toast.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <!--
 `lrnsys-comment-list`
@@ -14,6 +21,9 @@ A listing and event handling for comments.
       }
       .comment-button {
         padding-right: 1em;
+      }
+      app-toolbar {
+        padding: 0;
       }
     </style>
     <!-- Load all comments on load of element -->
@@ -41,7 +51,7 @@ A listing and event handling for comments.
     <iron-ajax id="ajaxLikeRequest" url="[[reqUrl]]" method="PATCH" body="[[activeComment]]" content-type="application/json"
       handle-as="json" on-response="_handleLikeResponse"></iron-ajax>
     <app-toolbar>
-      <lrnsys-button class="comment-button" raised on-click="handleTopReply" id="leave-comment" icon="reply" hover-class="blue white-text" label="Add comment"></lrnsys-button>
+      <lrnsys-button class="comment-button" raised on-click="handleTopReply" id="leave-comment" hover-class="blue white-text" label="Add Comment"></lrnsys-button>
     </app-toolbar>
     <iron-list id="commentlist" items="[[_toArray(comments.data)]]">
       <template>
@@ -133,7 +143,8 @@ A listing and event handling for comments.
        * Ready event should ensure that the iron-list is the correct size.
        */
       ready: function(e) {
-        this.$.commentlist.fire('iron-resize');
+        this.$$('#commentlist').fire;
+        //this.$.commentlist.fire('iron-resize');
       },
       /**
        * Generate the ops URL based on the active comment
