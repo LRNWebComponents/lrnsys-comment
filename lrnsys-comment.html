@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 <link rel="import" href="../moment-element/moment-element.html">
+=======
+ <link rel="import" href="../moment-element/moment-element.html">
+ 
+ 
+ 
+ 
+ 
+>>>>>>> 6ace544c071c324db7404266bd8e8846a706996f
 <link rel="import" href="../materializecss-styles/colors.html">
 <link rel="import" href="../iron-icons/editor-icons.html">
 <link rel="import" href="../marked-element/marked-element.html">
@@ -34,6 +43,7 @@ A well styled comment for a user with markdown support.
       :host:hover {
         z-index: 2;
       }
+<<<<<<< HEAD
       :host:focus .comment-outer,
       :host:hover .comment-outer {
         border: 1px #0277bd solid;
@@ -65,12 +75,21 @@ A well styled comment for a user with markdown support.
       }
       .comment-content {
         padding-right: 7px;
+=======
+      paper-card {
+        max-width: 70%;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        background: transparent;
+>>>>>>> 6ace544c071c324db7404266bd8e8846a706996f
       }
       h1,
       h2,
       h3,
       h4 {
         text-align: left;
+        font-size: 1rem;
+        line-height: 1.25rem;
       }
       h1.comment-heading,
       h2.comment-heading,
@@ -87,6 +106,10 @@ A well styled comment for a user with markdown support.
         background-color: white;
         padding: .25em;
       }
+      marked-element {
+        line-height: 1rem;
+        font-size: 0.9rem;
+      }
       .nowrap marked-element:hover {
         box-shadow: -1px 0 0 0 black inset;
         cursor: pointer;
@@ -95,6 +118,12 @@ A well styled comment for a user with markdown support.
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+      .nowrap marked-element ::slotted(#content p.marked-element::after) {
+        content: "see more";
+        position: absolute;
+        bottom: 30%;
+        left: 80%;
       }
       .comment-depth-1 {
         width: 0em;
@@ -161,12 +190,27 @@ A well styled comment for a user with markdown support.
         overflow: hidden;
       }
     </style>
+<<<<<<< HEAD
     <div class$="comment-outer [[commentNew]]">
       <div class="comment-inner">
         <div class$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"></div>
         <div class="comment-avatar">
           <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left ferpa-protect"></lrndesign-avatar>
           <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect">[[displayName]]</paper-tooltip>
+=======
+    <div class$="center comment-depth-[[comment.attributes.threadDepth]]">
+      <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left ferpa-protect"></lrndesign-avatar>
+      <moment-element datetime$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
+    </div>
+    <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect">[[displayName]]</paper-tooltip>
+    <paper-card id="papercard" elevation="0" class$="paper-card-length-[[comment.attributes.threadDepth]]">
+      <div class="comment-body">
+        <div id="bodyarea" class="nowrap">
+          <h4 class="ferpa-protect">[[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:</h4>
+          <marked-element smartypants id="rendered-comment" markdown="[[comment.attributes.body]]">
+            <div class="markdown-html-slot" slot="markdown-html"></div>
+          </marked-element>
+>>>>>>> 6ace544c071c324db7404266bd8e8846a706996f
         </div>
         <!--paper-card id="papercard" class$="paper-card-length-[[comment.attributes.threadDepth]] [[cardNew]]"-->
         <div class="comment-content">
@@ -231,12 +275,16 @@ A well styled comment for a user with markdown support.
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
       <!--/paper-card-->
     <template is="dom-if" if="[[comment.relationships.author.data.visual.icon]]">
       <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
       </paper-badge>
     </template>
+=======
+    </paper-card>
+>>>>>>> 6ace544c071c324db7404266bd8e8846a706996f
   </template>
   <script>
     Polymer({
@@ -285,7 +333,13 @@ A well styled comment for a user with markdown support.
       },
       _isCommentNew: function(visual) {
         if (typeof visual !== typeof undefined && visual.label !== false) {
+<<<<<<< HEAD
           return 'new-comment';
+=======
+          Polymer.dom(this).node.classList.add('amber');
+          Polymer.dom(this).node.classList.add('lighten-5');
+          return 'amber lighten-5';
+>>>>>>> 6ace544c071c324db7404266bd8e8846a706996f
         }
         return '';
       },
