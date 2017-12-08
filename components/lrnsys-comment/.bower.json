@@ -1,0 +1,43 @@
+{
+  "name": "lrnsys-comment",
+  "description": "A LRN element",
+  "main": "lrnsys-comment.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.9.3",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "paper-toast": "PolymerElements/paper-toast#^2.0.0",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "lrnsys-button": "LRNWebComponents/lrnsys-button#^1.0.0",
+    "iron-list": "PolymerElements/iron-list#^2.0.12",
+    "app-layout": "PolymerElements/app-layout#^2.0.4",
+    "iron-ajax": "PolymerElements/iron-ajax#^2.0.6",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^2.0.0",
+    "materializecss-styles": "LRNWebComponents/materializecss-styles#^1.0.0",
+    "lrndesign-avatar": "LRNWebComponents/lrndesign-avatar#^1.0.1",
+    "moment-element": "abdonrd/moment-element#^0.4.4",
+    "iron-icons": "PolymerElements/iron-icons#^2.0.1",
+    "marked-element": "PolymerElements/marked-element#^2.3.2",
+    "mtz-marked-editor": "MaritzSTL/mtz-marked-editor#^0.2.2",
+    "paper-badge": "PolymerElements/paper-badge#^2.0.0",
+    "paper-card": "PolymerElements/paper-card#^2.0.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1",
+    "dropdown-select": "LRNWebComponents/dropdown-select",
+    "grafitto-filter": "grafitto/grafitto-filter#^0.0.3",
+    "neon-animation": "PolymerElements/neon-animation#^2.0.2"
+  },
+  "homepage": "https://github.com/LRNWebComponents/lrnsys-comment",
+  "_release": "a4ffc63644",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a4ffc636441fefe45846b4db11009b6689ffd21d"
+  },
+  "_source": "https://github.com/LRNWebComponents/lrnsys-comment.git",
+  "_target": "master",
+  "_originalSource": "LRNWebComponents/lrnsys-comment",
+  "_direct": true
+}
