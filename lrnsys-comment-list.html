@@ -1,11 +1,18 @@
 <link rel="import" href="lrnsys-comment.html">
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 <link rel="import" href="../iron-list/iron-list.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="../app-layout/app-layout.html">
 <link rel="import" href="../lrnsys-button/lrnsys-button.html">
 <link rel="import" href="../paper-toast/paper-toast.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../grafitto-filter/grafitto-filter.html">
+<link rel="import" href="../dropdown-select/dropdown-select.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
 
 <!--
 `lrnsys-comment-list`
@@ -19,11 +26,11 @@ A listing and event handling for comments.
       :host {
         display: block;
       }
-      .comment-button {
-        padding-right: 1em;
-      }
       app-toolbar {
         padding: 0;
+      }
+      app-toolbar > *:not(:last-child) {
+        margin-right: 10px;
       }
     </style>
     <!-- Load all comments on load of element -->
@@ -52,12 +59,21 @@ A listing and event handling for comments.
       handle-as="json" on-response="_handleLikeResponse"></iron-ajax>
     <app-toolbar>
       <lrnsys-button class="comment-button" raised on-click="handleTopReply" id="leave-comment" hover-class="blue white-text" label="Add Comment"></lrnsys-button>
+      <dropdown-select id="filter-type" label="Filter Comments by" value="attributes.body">
+        <paper-item value="attributes.body">Body</paper-item>
+        <paper-item value="relationships.author.data.name">User Name</paper-item>
+      </dropdown-select>
+      <paper-input label="Filter Text" id="filter-comments" aria-controls="filtered-comments" value="" always-float-label></paper-input>   
     </app-toolbar>
-    <iron-list id="commentlist" items="[[_toArray(comments.data)]]">
+    <grafitto-filter id="filtered-comments" items$="[[_toArray(comments.data)]]" where="" as="filtered" like="">
       <template>
-      <lrnsys-comment comment="{{item}}" hover-class="blue white-text"></lrnsys-comment>
+        <iron-list id="comment-list" items$="[[filtered]]" as="item">
+          <template>
+          <lrnsys-comment comment="{{item}}" hover-class="blue white-text"></lrnsys-comment>
+          </template>
+        </iron-list>
       </template>
-    </iron-list>
+    </grafitto-filter>
     <paper-toast text="Updated" id="toast"></paper-toast>
     <paper-dialog id="deleteaction" modal>
       <h3>Delete comment</h3>
@@ -143,14 +159,30 @@ A listing and event handling for comments.
        * Ready event should ensure that the iron-list is the correct size.
        */
       ready: function(e) {
-        this.$$('#commentlist').fire;
-        //this.$.commentlist.fire('iron-resize');
+        let root = this;
+        root.$$('#filtered-comments').$$('#comment-list').fire('iron-resize');
+        root.$$('#filter-comments').addEventListener('change', function(e){
+          root.$$('#filtered-comments').like = e.target.value;
+        });
+        root.$$('#filter-type').addEventListener('change', function(e){
+          root.$$('#filter-comments').value = '';
+          root.$$('#filtered-comments').where = e.detail.value;
+          root.$$('#filtered-comments').like = '';
+        });
       },
       /**
        * Generate the ops URL based on the active comment
        */
       _computeCommentOpsUrl: function (activeComment, sourcePath, csrfToken) {
         return sourcePath + '/' + activeComment.id + '?token=' + csrfToken
+      },
+      /**
+       * Handle filtering comments list.
+       */
+      handleLike: function (e) {
+        let root = this;
+        root.activeComment = e.detail.comment;
+        this.$.ajaxLikeRequest.generateRequest();
       },
       /**
        * Handle liking a comment.
