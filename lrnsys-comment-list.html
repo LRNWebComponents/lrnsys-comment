@@ -161,7 +161,7 @@ A listing and event handling for comments.
       ready: function(e) {
         let root = this;
         root.$$('#filtered-comments').$$('#comment-list').fire('iron-resize');
-        root.$$('#filter-comments').addEventListener('change', function(e){
+        root.$$('#filter-comments').addEventListener('value-changed', function(e){
           root.$$('#filtered-comments').like = e.target.value;
         });
         root.$$('#filter-type').addEventListener('change', function(e){
