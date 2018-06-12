@@ -18,7 +18,6 @@
     "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^2.0.0",
     "materializecss-styles": "LRNWebComponents/materializecss-styles#^1.0.0",
     "lrndesign-avatar": "LRNWebComponents/lrndesign-avatar#^1.0.1",
-    "moment-element": "abdonrd/moment-element#^0.4.4",
     "iron-icons": "PolymerElements/iron-icons#^2.0.1",
     "marked-element": "PolymerElements/marked-element#^2.3.2",
     "mtz-marked-editor": "MaritzSTL/mtz-marked-editor#^0.2.2",

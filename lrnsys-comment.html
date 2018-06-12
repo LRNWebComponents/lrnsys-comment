@@ -93,17 +93,17 @@ A well styled comment for a user with markdown support.
         line-height: 1rem;
         font-size: 0.9rem;
       }
-      .nowrap marked-element:hover {
+      .nowrap-me marked-element:hover {
         box-shadow: -1px 0 0 0 black inset;
         cursor: pointer;
       }
-      .nowrap marked-element ::slotted(#content p.marked-element) {
+      .nowrap-me marked-element ::slotted(#content p.marked-element) {
         height: 2em;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 35px;
       }
-      .nowrap marked-element ::slotted(#content p.marked-element::after) {
+      .nowrap-me marked-element ::slotted(#content p.marked-element::after) {
         content: "see more";
         position: absolute;
         bottom: 65px;
@@ -184,7 +184,7 @@ A well styled comment for a user with markdown support.
         </div>
         <div class="comment-content">
           <div class="comment-body">
-            <div id="bodyarea" class="nowrap">
+            <div id="bodyarea" class="nowrap-me">
               <h4 class="ferpa-protect comment-heading">
                 <span class="element-invisible">At </span><moment-element datetime$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
                 [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
@@ -377,7 +377,7 @@ A well styled comment for a user with markdown support.
        */
       bodyToggle: function (e) {
         let root = this;
-        root.$.bodyarea.classList.remove('nowrap');
+        root.$.bodyarea.classList.remove('nowrap-me');
         document.querySelector('iron-list').fire('iron-resize');
       },
       /**
@@ -385,7 +385,7 @@ A well styled comment for a user with markdown support.
        */
       bodyToggleOn: function (e) {
         let root = this;
-        root.$.bodyarea.classList.toggle('nowrap');
+        root.$.bodyarea.classList.toggle('nowrap-me');
         document.querySelector('iron-list').fire('iron-resize');
       },
     });
