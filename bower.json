@@ -26,6 +26,7 @@
     "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1",
     "dropdown-select": "LRNWebComponents/dropdown-select",
     "grafitto-filter": "grafitto/grafitto-filter#^0.0.3",
-    "neon-animation": "PolymerElements/neon-animation#^2.0.2"
+    "neon-animation": "PolymerElements/neon-animation#^2.0.2",
+    "word-count": "LRNWebcomponents/word-count#^1.0.1"
   }
 }

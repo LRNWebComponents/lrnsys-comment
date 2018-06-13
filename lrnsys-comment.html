@@ -9,6 +9,7 @@
 <link rel="import" href="../paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../paper-badge/paper-badge.html">
+<link rel="import" href="../word-count/word-count.html">
 <link rel="import" href="../lrnsys-button/lrnsys-button.html">
 <link rel="import" href="../lrndesign-avatar/lrndesign-avatar.html">
 
@@ -190,7 +191,7 @@ A well styled comment for a user with markdown support.
                 [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
               </h4>
               <marked-element smartypants id="rendered-comment" markdown="[[comment.attributes.body]]">
-                <div class="markdown-html-slot" slot="markdown-html"></div>
+                <word-count class="markdown-html-slot" slot="markdown-html"></word-count>
               </marked-element>
             </div>
             <mtz-marked-editor id="comment-editor" hidden>
